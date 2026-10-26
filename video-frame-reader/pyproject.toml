@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+# video-frame-reader: sample any video into frames + timecodes,
+# streamable frame-by-frame to a consumer (e.g. face-recognition). ffmpeg engine, zero LLM.
+name = "lia-video-frame-reader"
+version = "0.1.0"
+description = "Frame-by-frame video reading: sample frames and timecodes from any video via ffmpeg."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Sitanshu Ranjan", email = "build.sitanshu@gmail.com" }]
+requires-python = ">=3.12,<3.13"
+
+# ffmpeg + ffprobe are SYSTEM binaries (Homebrew); no Python media deps needed.
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+lia-video = "lia_video_frame_reader.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

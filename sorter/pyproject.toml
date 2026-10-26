@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+# The application that composes face-recognition + video-frame-reader into the event face sorter.
+name = "event-face-sorter"
+version = "0.1.0"
+description = "Sort event photos and videos into one folder per person, locally, by face."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Sitanshu Ranjan", email = "build.sitanshu@gmail.com" }]
+requires-python = ">=3.12,<3.13"
+
+# The two libraries are installed separately via `pip install -e ../face-recognition
+# ../video-frame-reader` (setup.sh does this) so each keeps its own pinned ABI.
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.34",
+    "pydantic>=2.9,<3",
+    "numpy<2",
+    "pillow>=10.4",
+    "pillow-heif>=0.18",
+    "google-api-python-client>=2.140",
+    "google-auth>=2.34",
+    "google-auth-oauthlib>=1.2",
+    "itsdangerous>=2.2",
+    "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "ruff>=0.6",
+    "httpx>=0.27",
+]
+
+[project.scripts]
+convo-gallery = "convo_gallery.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["apps/service/src"]
+
+[tool.setuptools.package-data]
+convo_gallery = ["migrations/*.sql", "viewer/*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

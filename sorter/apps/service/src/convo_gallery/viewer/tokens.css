@@ -1,0 +1,78 @@
+/* Design tokens for the gallery viewer. Semantic names (color, font size, spacing) are the only values the page uses; raw colours live here only.
+   Dark is the default; light follows the system setting. */
+:root {
+  --ink-0: #FFFFFF; --ink-25: #ECEEF2; --ink-50: #F3F5F7; --ink-100: #ECEEF1; --ink-150: #E2E5EA;
+  --ink-200: #D4D8DF; --ink-300: #B6BCC6; --ink-400: #8B93A0; --ink-500: #6B7280; --ink-600: #5A626E;
+  --ink-700: #3C424C; --ink-750: #2A2E36; --ink-800: #21252E; --ink-850: #1B1E25; --ink-900: #16181D;
+  --ink-925: #14161B; --ink-950: #101216;
+  --green-300: #67BA9B; --green-400: #2E9E78; --green-500: #137A5B;
+  --brass-300: #D2A24E; --brass-500: #B9892F;
+  --alert-300: #E0584C; --alert-500: #C2453B;
+
+  --fs-4xs: 0.5625rem; --fs-3xs: 0.625rem; --fs-2xs: 0.6875rem; --fs-xs: 0.75rem; --fs-sm: 0.8125rem;
+  --fs-base: 0.9375rem; --fs-md: 1.0625rem; --fs-lg: 1.25rem; --fs-xl: 1.5rem; --fs-2xl: 2rem; --fs-3xl: 3rem;
+
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 20px; --space-6: 24px;
+  --space-8: 32px; --space-10: 40px; --space-12: 48px; --space-16: 64px;
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 14px; --radius-pill: 999px;
+  --bw-hairline: 1px; --bw-strong: 1.5px;
+
+  --font-display: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-body: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+
+  --color-bg: var(--ink-925);
+  --color-surface: var(--ink-850);
+  --color-surface-raised: var(--ink-800);
+  --color-surface-sunk: var(--ink-950);
+  --color-text: var(--ink-25);
+  --color-text-muted: var(--ink-400);
+  --color-text-subtle: var(--ink-500);
+  --color-border: var(--ink-750);
+  --color-border-strong: var(--ink-700);
+  --color-accent: var(--ink-25);
+  --color-accent-fg: var(--ink-925);
+  --color-ok: var(--green-400);
+  --color-warn: var(--brass-300);
+  --color-down: var(--alert-300);
+  --color-focus: var(--ink-25);
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-mode="dark"]) {
+    --color-bg: var(--ink-50);
+    --color-surface: var(--ink-0);
+    --color-surface-raised: var(--ink-0);
+    --color-surface-sunk: var(--ink-100);
+    --color-text: var(--ink-900);
+    --color-text-muted: var(--ink-600);
+    --color-text-subtle: var(--ink-400);
+    --color-border: var(--ink-150);
+    --color-border-strong: var(--ink-300);
+    --color-accent: var(--ink-900);
+    --color-accent-fg: var(--ink-0);
+    --color-ok: var(--green-500);
+    --color-warn: var(--brass-500);
+    --color-down: var(--alert-500);
+    --color-focus: var(--ink-900);
+    color-scheme: light;
+  }
+}
+[data-mode="light"] {
+  --color-bg: var(--ink-50);
+  --color-surface: var(--ink-0);
+  --color-surface-raised: var(--ink-0);
+  --color-surface-sunk: var(--ink-100);
+  --color-text: var(--ink-900);
+  --color-text-muted: var(--ink-600);
+  --color-text-subtle: var(--ink-400);
+  --color-border: var(--ink-150);
+  --color-border-strong: var(--ink-300);
+  --color-accent: var(--ink-900);
+  --color-accent-fg: var(--ink-0);
+  --color-ok: var(--green-500);
+  --color-warn: var(--brass-500);
+  --color-down: var(--alert-500);
+  --color-focus: var(--ink-900);
+  color-scheme: light;
+}

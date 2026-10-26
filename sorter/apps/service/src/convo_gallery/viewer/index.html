@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sorted photos</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: var(--space-4); background: var(--color-bg); color: var(--color-text);
+    font-family: var(--font-body); font-size: var(--fs-base); line-height: 1.4; }
+  .wrap { max-width: 72rem; margin: 0 auto; }
+  h1 { font-family: var(--font-display); font-size: var(--fs-xl); margin: 0 0 var(--space-1); }
+  a { color: var(--color-text); }
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: var(--bw-strong) solid var(--color-focus); outline-offset: var(--space-1); }
+  .sub { color: var(--color-text-muted); font-size: var(--fs-sm); margin: 0 0 var(--space-4); }
+  .bar { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; margin-bottom: var(--space-4); }
+  input[type="text"], input[type="search"] { font: inherit; color: var(--color-text); background: var(--color-surface);
+    border: var(--bw-hairline) solid var(--color-border-strong); border-radius: var(--radius-md);
+    padding: var(--space-2) var(--space-3); min-width: 0; flex: 1 1 12rem; }
+  button, .btn { font: inherit; font-size: var(--fs-sm); color: var(--color-accent-fg); background: var(--color-accent);
+    border: 0; border-radius: var(--radius-md); padding: var(--space-2) var(--space-3); cursor: pointer;
+    text-decoration: none; display: inline-block; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr)); gap: var(--space-3); }
+  .card, .tile { display: block; text-decoration: none; background: var(--color-surface);
+    border: var(--bw-hairline) solid var(--color-border); border-radius: var(--radius-md);
+    padding: var(--space-2); min-width: 0; }
+  .card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius-sm);
+    background: var(--color-surface-sunk); display: block; }
+  .card .nm { margin-top: var(--space-2); font-size: var(--fs-sm); overflow-wrap: anywhere; }
+  .card .ct { font-size: var(--fs-xs); color: var(--color-text-muted); }
+  .muted { color: var(--color-text-muted); }
+  .tile .ph, .tile img { width: 100%; aspect-ratio: 1 / 1; border-radius: var(--radius-sm); display: block;
+    object-fit: cover; background: var(--color-surface-sunk); }
+  .tile .ph { display: flex; align-items: center; justify-content: center; padding: var(--space-2);
+    font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--color-text-subtle); overflow-wrap: anywhere; }
+  .tile .fn { font-family: var(--font-mono); font-size: var(--fs-xs); margin-top: var(--space-2);
+    overflow-wrap: anywhere; color: var(--color-text-muted); }
+  .tag { font-size: var(--fs-xs); color: var(--color-warn); }
+  .head { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; margin: var(--space-4) 0; }
+  .head img { width: var(--space-16); height: var(--space-16); object-fit: cover; border-radius: var(--radius-pill);
+    background: var(--color-surface-sunk); }
+  .ok { color: var(--color-ok); font-size: var(--fs-sm); }
+  .err { color: var(--color-down); font-size: var(--fs-sm); }
+  .sk { background: var(--color-surface-sunk); border-radius: var(--radius-md); aspect-ratio: 1 / 1; }
+  .empty { padding: var(--space-8) 0; color: var(--color-text-muted); }
+</style>
+</head>
+<body>
+<div class="wrap" id="app"><div class="grid" aria-busy="true"></div></div>
+<script src="app.js"></script>
+</body>
+</html>

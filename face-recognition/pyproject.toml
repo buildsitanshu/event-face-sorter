@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+# face-recognition: a reusable library to detect + embed + group
+# faces in any image. 100% local (InsightFace/ArcFace on onnxruntime CPU), zero LLM cost.
+name = "lia-face-recognition"
+version = "0.1.0"
+description = "Face detection, ArcFace embedding, and unsupervised grouping for any image. Local CPU."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Sitanshu Ranjan", email = "build.sitanshu@gmail.com" }]
+requires-python = ">=3.12,<3.13"
+
+# numpy pinned <2: InsightFace + the onnxruntime/opencv wheels assume the numpy-1 ABI.
+# The pin lives ONLY inside this tool's venv; it never touches system or other tools.
+dependencies = [
+    "numpy<2",
+    "insightface>=0.7.3",
+    "onnxruntime>=1.19",
+    "opencv-python-headless>=4.10",
+    "pillow>=10.4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+lia-face = "lia_face_recognition.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

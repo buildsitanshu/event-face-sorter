@@ -1,0 +1,19 @@
+# Python envs / caches / build artifacts
+**/.venv/
+**/__pycache__/
+**/*.egg-info/
+**/.pytest_cache/
+**/.ruff_cache/
+.DS_Store
+
+# Node
+**/node_modules/
+**/dist/
+
+# Local secrets + config
+.env
+**/.wrangler/
+**/.claude/
+
+# Generated data: all gallery data is produced locally from your photo folder
+sorter/data/
